@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Roboto+Mono:wght@500&family=Roboto:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+font-family: 'roboto';
+color: aliceblue;
+}
+.main-work{
+    min-height: 100vh;
+    width: 100%;
+  
+background-color: rgb(253,104,134);
+}
+.navbar{
+    padding-block:10px !important ;
+background-color: rgb(237, 58, 94) ;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-img{
+width: 80px;
+height: 80px;
+border: 2px solid rgb(255, 255, 255);
+border-radius: 50%;
+
+}
+
+.logo{
+    display: flex;
+    gap: 5px;
+align-items: center;
+    margin-left: 20px;
+
+
+}
+.logo-text{
+
+font-family: 'Roboto Mono';
+   font-size: 25px;
+
+}
+.links{
+    margin-right: 40px;
+
+    display: flex;
+
+}
+.links ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    font-size: larger;
+}
+.links ul :hover{
+    color: rgb(255, 181, 195);
+
+}
+.recent-time{
+    margin-top: 20px;
+    /* width: 100vw; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.time{
+background-image: url("https://i.pinimg.com/originals/1d/a9/5b/1da95bffe09e6d58ccebe4db74ad674c.jpg");
+background-repeat: no-repeat;
+background-position-y: center;
+background-position-x: center;
+background-size:cover;
+
+opacity: 0.9    ;
+
+/* background-image: ; */
+/* opacity: 0.8; Adjust opacity (0 to 1) */
+
+
+/* background-position: center; */
+/* background-size: cover; */
+
+/* background-size: cover;
+background-position: center; */
+
+
+    width: 700px;
+
+    border-radius: 15px;
+height: 250px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+/* justify-content: center; */
+gap: 30px;
+position: relative;
+color: aliceblue !important;
+}
+#pakistan-time{
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    /* padding-block: 60px; */
+}
+.day{
+    font-size: 20px;
+}
+
+
+.namaz{
+
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 29px;
+    /* margin-bottom: 20px; */
+    /* margin-block: 20px; */
+    padding-block:20px ;
+
+
+}
+.namaze{
+    /* border: 1px solid rgb(0, 0, 0); */
+    width: 700px;
+    font-size: 20px;
+display: flex;
+justify-content: space-between;
+padding: 12px 10px;
+border-radius:14px;
+background-color: rgb(254,154,154)  ;
+ 
+}
+.img-text{
+    display: flex;
+    gap: 10px;
+    font-size: 18px;
+}
