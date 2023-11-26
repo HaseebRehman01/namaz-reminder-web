@@ -1,3 +1,20 @@
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker
+        .register("/serviceworker.js")
+        .then((res) => console.log(res, "service worker registered"))
+        .catch((err) => console.log("service worker not registered", err));
+    });
+  }
+  window.addEventListener("load", () => {
+    Notification.requestPermission((result) => {
+      if (result === "granted") {
+        // displayConfirmNotification();
+      }
+    });
+  });
+
+
 function updatePakistanTime() {
     var timeElement = document.getElementById("pakistan-time");
     var currentUTC = new Date();
@@ -30,9 +47,9 @@ function updatePakistanTime() {
 
         maghribEndTime = new Date (`${monthvar} ${date}, ${year} 06:30:00 PM`); //new day (evening)
 
-        ishaStartTime = new Date(`${monthvar} ${date}, ${year} 07:03:00 PM`);//new day (night)
+        ishaStartTime = new Date(`${monthvar} ${date - 1}, ${year} 07:03:00 PM`);//new day (night)
   
-        ishaEndTime = new Date(`${monthvar} ${date + 1}, ${year} 05:03:00 AM`);//next day means if now is sun than (this code is for mon)
+        ishaEndTime = new Date(`${monthvar} ${date}, ${year} 05:31:00 AM`);//next day means if now is sun than (this code is for mon)
       
  
 
@@ -46,21 +63,20 @@ function updatePakistanTime() {
             } 
             else if (currentday >= zuharStartTime && currentday <= zuharEndTime) {
                  console.log(zuharStartTime)
-        console.log(zuharEndTime)
 
                 namazTiming.innerHTML = "Zuhar";
                 namazremindertime.innerHTML = "12:17 am - 04:06 pm";
             } else if (currentday >= asrStartTime && currentday <= asrEndTime) {
                 namazTiming.innerHTML = "Asr";
                 namazremindertime.innerHTML = "04:07 pm - 05:42 pm";
-            } else if (currentday >= maghribStartTime && currentday <= maghribEndTime) {
+            } 
+            else if (currentday >= maghribStartTime && currentday <= maghribEndTime) {
                 namazTiming.innerHTML = "Maghrib";
                 namazremindertime.innerHTML = "05:43 pm - 06:17 pm";
             } 
             else if (currentday >= ishaStartTime && currentday <= ishaEndTime) {
                 namazTiming.innerHTML = "Isha";
                 namazremindertime.innerHTML = "07:03 pm - 05:31 am";
-                console.log(ishaStartTime,ishaEndTime)
             } 
             // console.log(ishaStartTime , ishaEndTime)
             else{
@@ -68,7 +84,6 @@ function updatePakistanTime() {
                 namazTiming.innerHTML = "There are no <br>farz prayers<br> currently"; 
                 namazremindertime.innerHTML = "";
             }
-            console.log(ishaStartTime,ishaEndTime)
     
         }
 
@@ -117,7 +132,7 @@ function shownamaz() {
     var zuhar = document.getElementById("zuhar");
     var zuhartime = document.getElementById("zuhartime");
     zuhar.innerHTML = `Zuhar , ${monthvar} ${date}`;
-    zuhartime.innerHTML = `12:17 am`;
+    zuhartime.innerHTML = `12:17 PM`;  // Corrected to PM
 
     var asr = document.getElementById("asr");
     var asrtime = document.getElementById("asrtime");
