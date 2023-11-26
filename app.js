@@ -18,21 +18,23 @@ function updatePakistanTime() {
         // Variable Declarations
         var fajrStartTime, fajrEndTime, zuharStartTime, zuharEndTime, asrStartTime, asrEndTime, maghribStartTime, maghribEndTime, ishaStartTime, ishaEndTime;
 
-        fajrStartTime = new Date(`${monthvar} ${date}, ${year} 05:32:00 AM`);
-        fajrEndTime = new Date(`${monthvar} ${date}, ${year} 06:51:00 AM`);
-        zuharStartTime = new Date(`${monthvar} ${date}, ${year} 07:17:00 AM`);
-        zuharEndTime = new Date(`${monthvar} ${date}, ${year} 04:06:00 PM`);
-        asrStartTime = new Date(`${monthvar} ${date}, ${year} 04:07:00 PM`);
-        asrEndTime = new Date(`${monthvar} ${date}, ${year} 05:42:00 PM`);
-        maghribStartTime = new Date(`${monthvar} ${date}, ${year} 05:43:00 PM`);
+        fajrStartTime = new Date(`${monthvar} ${date}, ${year} 05:32:00 AM`); // new day
+        fajrEndTime = new Date(`${monthvar} ${date}, ${year} 06:51:00 AM`); // new day
+        zuharStartTime = new Date(`${monthvar} ${date}, ${year} 12:17:00 PM`); //new day (afternoon)
 
-        maghribEndTime = new Date (`${monthvar} ${date}, ${year} 06:30:00 PM`);
+        zuharEndTime = new Date(`${monthvar} ${date}, ${year} 04:06:00 PM`); //new day (afternoon)
+  
+        asrStartTime = new Date(`${monthvar} ${date}, ${year} 04:07:00 PM`); //new day (afternoon)
+        asrEndTime = new Date(`${monthvar} ${date}, ${year} 05:42:00 PM`); //new day (afternoon)
+        maghribStartTime = new Date(`${monthvar} ${date}, ${year} 05:43:00 PM`); //new day (afternoon)
 
-        ishaStartTime = new Date(`${monthvar} ${date}, ${year} 07:03:00 PM`);
-        console.log(ishaStartTime)
-        ishaEndTime = new Date(`${monthvar} ${date + 1}, ${year} 05:03:00 AM`);
-        console.log(ishaEndTime)
+        maghribEndTime = new Date (`${monthvar} ${date}, ${year} 06:30:00 PM`); //new day (evening)
 
+        ishaStartTime = new Date(`${monthvar} ${date}, ${year} 07:03:00 PM`);//new day (night)
+  
+        ishaEndTime = new Date(`${monthvar} ${date + 1}, ${year} 05:03:00 AM`);//next day means if now is sun than (this code is for mon)
+      
+ 
 
         function uppernamaz() {
             var namazTiming = document.getElementById("namaz-timing");
@@ -41,7 +43,11 @@ function updatePakistanTime() {
             if (currentday >= fajrStartTime && currentday <= fajrEndTime) {
                 namazTiming.innerHTML = "Fajr";
                 namazremindertime.innerHTML = "5:32 am - 6:51 am";
-            } else if (currentday >= zuharStartTime && currentday <= zuharEndTime) {
+            } 
+            else if (currentday >= zuharStartTime && currentday <= zuharEndTime) {
+                 console.log(zuharStartTime)
+        console.log(zuharEndTime)
+
                 namazTiming.innerHTML = "Zuhar";
                 namazremindertime.innerHTML = "12:17 am - 04:06 pm";
             } else if (currentday >= asrStartTime && currentday <= asrEndTime) {
@@ -50,12 +56,20 @@ function updatePakistanTime() {
             } else if (currentday >= maghribStartTime && currentday <= maghribEndTime) {
                 namazTiming.innerHTML = "Maghrib";
                 namazremindertime.innerHTML = "05:43 pm - 06:17 pm";
-            } else if (currentday >= ishaStartTime || currentday <= ishaEndTime) {
+            } 
+            else if (currentday >= ishaStartTime && currentday <= ishaEndTime) {
                 namazTiming.innerHTML = "Isha";
                 namazremindertime.innerHTML = "07:03 pm - 05:31 am";
+                console.log(ishaStartTime,ishaEndTime)
             } 
-            
-          
+            // console.log(ishaStartTime , ishaEndTime)
+            else{
+
+                namazTiming.innerHTML = "There are no <br>farz prayers<br> currently"; 
+                namazremindertime.innerHTML = "";
+            }
+            console.log(ishaStartTime,ishaEndTime)
+    
         }
 
         uppernamaz();
