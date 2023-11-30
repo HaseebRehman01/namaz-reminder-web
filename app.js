@@ -9,6 +9,7 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     Notification.requestPermission((result) => {
       if (result === "granted") {
+        // notifications()
       }
     });
   });
@@ -51,7 +52,7 @@ function updatePakistanTime() {
   
         ishaEndTime = new Date(`${monthvar} ${date}, ${year} 05:31:00 AM`);//next day means if now is sun than (this code is for mon)
       
- console.log(ishaStartTime,ishaEndTime)
+
 
         function uppernamaz() {
             var namazTiming = document.getElementById("namaz-timing");
@@ -157,3 +158,47 @@ const navlinks = document.getElementById('nav-links-toggle');
 togglebutton.addEventListener('click', () => {
     navlinks.classList.toggle('active');
 });
+
+
+
+
+
+
+function notifications() {
+    var fajar = "5:32:40 am";
+    var zuhar = "12:17:00 pm";
+    var asar = "5:07:00 pm";
+    var magrib = "5:43:00 pm";
+    var esha = "7:33:00 pm";
+
+
+    var timeClock = moment().format("h:mm:ss a");
+
+    var formattedFajar = moment(fajar, "h:mm:ss a").format("h:mm:ss a");
+
+    var formattedZuhar = moment(zuhar, "h:mm:ss a").format("h:mm:ss a");
+    var formattedAsar = moment(asar, "h:mm:ss a").format("h:mm:ss a");
+    var formattedMagrib = moment(magrib, "h:mm:ss a").format("h:mm:ss a");
+    var formattedEsha = moment(esha, "h:mm:ss a").format("h:mm:ss a");
+
+
+    var options = {
+        body: "It's time for prayer.",
+        icon: "child-image.png",
+   
+    };
+
+    if (formattedFajar === timeClock) {
+        notification = new Notification("Fajr Prayer Time", options);
+    } else if (formattedZuhar === timeClock) {
+        notification = new Notification("Zuhar Prayer Time", options);
+    } else if (formattedAsar === timeClock) {
+        notification = new Notification("Asar Prayer Time", options);
+    } else if (formattedMagrib === timeClock) {
+        notification = new Notification("Magrib Prayer Time", options);
+    } else if (formattedEsha === timeClock) {
+        notification = new Notification("Esha Prayer Time", options);
+    }
+}
+
+setInterval(notifications, 1000);
