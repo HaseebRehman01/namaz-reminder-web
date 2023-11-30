@@ -9,12 +9,13 @@ if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     Notification.requestPermission((result) => {
       if (result === "granted") {
-        // displayConfirmNotification();
       }
     });
   });
 
 
+
+  
 function updatePakistanTime() {
     var timeElement = document.getElementById("pakistan-time");
     var currentUTC = new Date();
@@ -38,7 +39,6 @@ function updatePakistanTime() {
         fajrStartTime = new Date(`${monthvar} ${date}, ${year} 05:32:00 AM`); // new day
         fajrEndTime = new Date(`${monthvar} ${date}, ${year} 06:51:00 AM`); // new day
         zuharStartTime = new Date(`${monthvar} ${date}, ${year} 12:17:00 PM`); //new day (afternoon)
-
         zuharEndTime = new Date(`${monthvar} ${date}, ${year} 04:06:00 PM`); //new day (afternoon)
   
         asrStartTime = new Date(`${monthvar} ${date}, ${year} 04:07:00 PM`); //new day (afternoon)
@@ -51,7 +51,7 @@ function updatePakistanTime() {
   
         ishaEndTime = new Date(`${monthvar} ${date}, ${year} 05:31:00 AM`);//next day means if now is sun than (this code is for mon)
       
- 
+ console.log(ishaStartTime,ishaEndTime)
 
         function uppernamaz() {
             var namazTiming = document.getElementById("namaz-timing");
